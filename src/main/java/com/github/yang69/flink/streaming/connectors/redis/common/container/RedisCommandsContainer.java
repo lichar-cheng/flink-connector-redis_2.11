@@ -89,6 +89,16 @@ public interface RedisCommandsContainer extends Serializable {
     void set(String key, String value);
 
     /**
+     * Set key to hold the string value and set expire time. If key already holds a value, it is overwritten,
+     * regardless of its type. Any previous time to live associated with the key is
+     * discarded on successful SET operation.
+     *
+     * @param key the key name in which value to be set
+     * @param value the value
+     */
+    void set(String key, String value,int seconds);
+
+    /**
      * Set key to hold the string value. If key already holds a value, it is overwritten,
      * regardless of its type. Any previous time to live associated with the key is
      * discarded on successful SETEX operation.

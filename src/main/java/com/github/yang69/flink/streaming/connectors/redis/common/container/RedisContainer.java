@@ -188,6 +188,23 @@ public class RedisContainer implements RedisCommandsContainer, Closeable {
     }
 
     @Override
+    public void set(String key, String value, int seconds) {
+        Jedis jedis = null;
+        try {
+            jedis = getInstance();
+            jedis.set(key, value,null,"EX",seconds);
+        } catch (Exception e) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("Cannot send Redis message with command SET to key {} error message {}",
+                        key, e.getMessage());
+            }
+            throw e;
+        } finally {
+            releaseInstance(jedis);
+        }
+    }
+
+    @Override
     public void setex(final String key, final int seconds, final String value) {
         Jedis jedis = null;
         try {

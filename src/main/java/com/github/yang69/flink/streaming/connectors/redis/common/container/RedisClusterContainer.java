@@ -135,6 +135,11 @@ public class RedisClusterContainer implements RedisCommandsContainer, Closeable 
     }
 
     @Override
+    public void set(String key, String value, int seconds) {
+
+    }
+
+    @Override
     public void setex(final String key, final int seconds, final String value) {
         try {
             jedisCluster.setex(key, seconds, value);
