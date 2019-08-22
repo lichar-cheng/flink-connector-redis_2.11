@@ -17,3 +17,5 @@ test on JDK8, flink 1.4.2
 1.0 add support for SETEX, as a result, you will need to implement getSecondsFromData(), which returns the expire seconds for the key.
 
 1.0 增加了对 SETEX 的支持，需要实现 getSecondsFromData() 方法，该方法返回期望设置的过期时间（单位为秒）
+
+增加对set设置过期时间的方法
